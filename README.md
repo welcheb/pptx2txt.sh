@@ -19,13 +19,18 @@ redirect output to a text file
 ./pptx2txt.sh [options] PPTX_FILENAME > output.txt
 ~~~
 
-handing non-XML `.ppt` format
+options for handling non-XML `.ppt` or Mac keynote (`.key`) formats
 
-* manually save as `.pptx` format, e.g. with [LibreOffice](https://www.libreoffice.org/)
+* convert `.ppt` or `.key` to `.pptx` using [LibreOffice](https://www.libreoffice.org/)
 
-* convert `.ppt` to `.pptx` using `unoconv` (Linux/Unix)
-~~~
-sudo apt-get install unoconv
-unoconv --doctype=presentation --format=pptx --output=tmp.pptx PPT_FILENAME
-./pptx2txt.sh tmp.pptx
-~~~
+  ** .ppt to .pptx **
+  ~~~
+  libreoffice --headless --convert-to pptx filename.ppt
+  ./pptx2txt.sh filename.pptx
+  ~~~
+
+  ** .key to .pptx ** (LibreOffice 5.x or newer)
+  ~~~
+  libreoffice --headless --convert-to pptx filename.key
+  ./pptx2txt.sh filename.pptx
+  ~~~
